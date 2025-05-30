@@ -96,3 +96,12 @@ export const getAllDevicesForAdmin = async () => {
         };
     });
 };
+
+
+
+
+export const getAllDevicesInPhong = async (phongId) => {
+    const q = query(collection(db, 'thiet_bi'), where('phongId', '==', phongId));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};

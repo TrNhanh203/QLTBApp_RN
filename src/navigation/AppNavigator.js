@@ -20,14 +20,16 @@ import DonViYeuCauListScreen from '../screens/donvi/DonViYeuCauListScreen';
 import TestBottomSheetScreen from '../screens/debug/TestBottomSheetScreen';
 import DeviceListScreen from '../screens/donvi/DeviceListScreen';
 import NewRequestScreen from '../screens/donvi/NewRequestScreen';
+
 import ThietBiDetailScreen from '../screens/donvi/ThietBiDetailScreen';
+import DeviceDetailScreen from '../screens/admin/DeviceDetailScreen';
+
 import PhongListScreen from '../screens/donvi/PhongListScreen';
 import AdminRequestListScreen from '../screens/admin/AdminRequestListScreen';
 import SplashScreen from '../screens/common/SplashScreen';
 import AdminRequestDetailScreen from '../screens/admin/AdminRequestDetailScreen';
-import DeviceDetailScreen from '../screens/admin/DeviceDetailScreen';
 import PhanCongDetailScreen from '../screens/admin/PhanCongDetailScreen';
-
+import DeviceByRoomScreen from '../screens/donvi/DeviceByRoomScreen';
 
 
 
@@ -95,7 +97,11 @@ export default function AppNavigator() {
       <Stack.Screen name="TestBottomSheet" component={TestBottomSheetScreen} />
       <Stack.Screen name="DeviceList" component={DeviceListScreen} />
       <Stack.Screen name="NewRequest" component={NewRequestScreen} />
+
       <Stack.Screen name="ThietBiDetail" component={DeviceDetailScreen} options={{ title: 'Chi tiết thiết bị' }} />
+      <Stack.Screen name="DonViThietBiDetail" component={ThietBiDetailScreen} options={{ title: 'Chi tiết thiết bị' }} />
+
+
       <Stack.Screen name="PhongList" component={PhongListScreen} />
       <Stack.Screen
         name="AdminRequestList"
@@ -117,7 +123,7 @@ export default function AppNavigator() {
         component={PhanCongDetailScreen}
         options={{ title: 'Chi tiết phân công' }}
       />
-
+      <Stack.Screen name="ThietBiTheoPhong" component={DeviceByRoomScreen} />
       {/* <Stack.Screen name="ThietBiTheoPhong" component={ThietBiTheoPhongScreen} /> */}
 
     </Stack.Navigator>

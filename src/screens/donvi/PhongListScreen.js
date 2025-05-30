@@ -75,7 +75,11 @@ export default function PhongListScreen() {
         // console.log('🧩 Render phòng:', item);
         return (
             <TouchableOpacity style={[styles.card, { backgroundColor: colors.surface }]}
-                onPress={() => navigation.navigate('ThietBiTheoPhong', { phongId: item.id })}>
+                onPress={() => navigation.navigate('ThietBiTheoPhong', {
+                    phongId: item.id,
+                    tenPhong: item.tenPhong,
+                })}
+            >
                 <View style={{ height: 8, backgroundColor: colors.primaryContainer }} />
                 <View style={styles.cardContent}>
                     <View style={[styles.avatar, { backgroundColor: colors.primary + '22' }]}>

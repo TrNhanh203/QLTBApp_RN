@@ -37,8 +37,8 @@ function FormThemChiTietTab({ thietBi, yeuCauId, chiTietYeuCauId }) {
                 chiTietYeuCauId={chiTietYeuCauId}
                 onSuccess={() => {
                     console.log('✅ Đã lưu xong chi tiết yêu cầu');
-                    navigation.navigate('NewRequest', { yeuCauId: yeuCauId });
-                    // navigation.pop();
+                    //navigation.navigate('NewRequest', { yeuCauId: yeuCauId });
+                    navigation.pop();
                 }}
             />
         </View>

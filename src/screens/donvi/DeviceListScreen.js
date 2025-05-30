@@ -85,7 +85,7 @@ export default function DeviceListScreen({ route }) {
             isSelected={selectedDevices.includes(item.id)}
             onPress={() => {
                 if (isSelectMode && yeuCauId) {
-                    navigation.navigate('ThietBiDetail', {
+                    navigation.navigate('DonViThietBiDetail', {
                         thietBiId: item.id,
                         yeuCauId: yeuCauId,
                     });
