@@ -9,6 +9,7 @@ import DeviceLocationCard from '../../components/DeviceLocationCard';
 import DeviceMaintenanceCard from '../../components/DeviceMaintenanceCard';
 import NoteCard from '../../components/NoteCard';
 import useAppTheme from '../../hooks/useAppTheme';
+import TechnicianListSection from '../../components/TechnicianListSection';
 
 export default function PhanCongDetailScreen() {
     const { colors } = useAppTheme();
@@ -43,7 +44,7 @@ export default function PhanCongDetailScreen() {
         <View style={{ flex: 1 }}>
             {/* Tab selector */}
             <View style={styles.tabContainer}>
-                {['Thông tin', 'Thiết bị', 'Minh chứng'].map((label, index) => (
+                {/* {['Thông tin', 'Thiết bị', 'Minh chứng'].map((label, index) => (
                     <TouchableOpacity
                         key={index}
                         style={[styles.tab, tab === index && styles.activeTab]}
@@ -53,7 +54,19 @@ export default function PhanCongDetailScreen() {
                             {label}
                         </Text>
                     </TouchableOpacity>
-                ))}
+                ))} */}
+                {['Thông tin', 'Thiết bị', 'Ảnh', 'KTV'].map((label, index) => (
+    <TouchableOpacity
+        key={index}
+        style={[styles.tab, tab === index && styles.activeTab]}
+        onPress={() => setTab(index)}
+    >
+        <Text style={[styles.tabText, tab === index && styles.activeTabText]}>
+            {label}
+        </Text>
+    </TouchableOpacity>
+))}
+
             </View>
 
             <ScrollView style={{ padding: 16 }} contentContainerStyle={{ paddingBottom: 32 }}>
@@ -136,6 +149,10 @@ export default function PhanCongDetailScreen() {
                         </ScrollView>
                     </>
                 )}
+
+                {tab === 3 && (
+    <TechnicianListSection phanCongId={phanCongId} />
+)}
             </ScrollView>
         </View>
     );

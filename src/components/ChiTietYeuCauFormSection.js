@@ -171,13 +171,14 @@ export default function ChiTietYeuCauFormSection({ yeuCauId, thietBiId, chiTietY
             // onSuccess?.();         // callback gọi từ `ThietBiDetailScreen`
             // navigation.navigate('NewRequest', { yeuCauId: item.id })
             onSuccess?.();
-            navigation.reset({
-                index: 1,
-                routes: [
-                    { name: 'QLDVDanhSachYeuCau' },
-                    { name: 'NewRequest', params: { yeuCauId } },
-                ],
-            });
+            // navigation.reset({
+            //     index: 1,
+            //     routes: [
+            //         { name: 'QLDVDanhSachYeuCau' },
+            //         { name: 'NewRequest', params: { yeuCauId } },
+            //     ],
+            // });
+            navigation.goBack();
 
         } catch (e) {
             console.error('❌ Lỗi khi lưu chi tiết yêu cầu:', e);
