@@ -3,26 +3,26 @@ import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firesto
 
 // 🔍 1. Lấy phân công theo ID
 export async function getPhanCongById(id) {
-    console.log('📥 getPhanCongById - ID:', id);
+    // console.log('📥 getPhanCongById - ID:', id);
     const ref = doc(db, 'phan_cong', id.toString());
     const snap = await getDoc(ref);
     const result = snap.exists() ? { id: snap.id, ...snap.data() } : null;
-    console.log('📤 getPhanCongById - Kết quả:', result);
+    // console.log('📤 getPhanCongById - Kết quả:', result);
     return result;
 }
 
 // 🔍 2. Lấy danh sách kỹ thuật viên của phân công
 export async function getPhanCongKtvList(phanCongId) {
-    console.log('📥 getPhanCongKtvList - phanCongId:', phanCongId);
+    // console.log('📥 getPhanCongKtvList - phanCongId:', phanCongId);
     const ref = collection(db, 'phan_cong_ktv');
     const q = query(ref, where('phanCongId', '==', phanCongId));
     const snap = await getDocs(q);
-    console.log('📊 Số lượng bản ghi phan_cong_ktv:', snap.size);
+    // console.log('📊 Số lượng bản ghi phan_cong_ktv:', snap.size);
 
     const list = [];
     for (const docSnap of snap.docs) {
         const data = docSnap.data();
-        console.log('📄 Dữ liệu phan_cong_ktv:', data);
+        // console.log('📄 Dữ liệu phan_cong_ktv:', data);
 
         let taiKhoan = null;
         try {
@@ -34,7 +34,7 @@ export async function getPhanCongKtvList(phanCongId) {
 
                 if (tkSnap.exists()) {
                     taiKhoan = { id: tkSnap.id, ...tkSnap.data() };
-                    console.log(`✅ Tải tài khoản thành công (ID: ${taiKhoanIdStr}):`, taiKhoan);
+                    // console.log(`✅ Tải tài khoản thành công (ID: ${taiKhoanIdStr}):`, taiKhoan);
                 } else {
                     console.warn(`⚠️ Không tìm thấy tài khoản với ID: ${taiKhoanIdStr}`);
                 }
@@ -52,7 +52,7 @@ export async function getPhanCongKtvList(phanCongId) {
 
 // 🔧 Hàm mới: lấy danh sách kỹ thuật viên + trạng thái chung của phân công
 export async function getDsKtvByPhanCongId(phanCongId) {
-    console.log('🚀 Bắt đầu getDsKtvByPhanCongId:', phanCongId);
+    // console.log('🚀 Bắt đầu getDsKtvByPhanCongId:', phanCongId);
     const ktvListRaw = await getPhanCongKtvList(phanCongId);
     const phanCong = await getPhanCongById(phanCongId);
 
@@ -67,7 +67,7 @@ export async function getDsKtvByPhanCongId(phanCongId) {
             },
             taiKhoan: item.taiKhoan || null,
         };
-        console.log('🧑‍🔧 Kỹ thuật viên mapped:', mapped);
+        // console.log('🧑‍🔧 Kỹ thuật viên mapped:', mapped);
         return mapped;
     });
 
@@ -75,7 +75,7 @@ export async function getDsKtvByPhanCongId(phanCongId) {
         ktvList,
         trangThaiChung: phanCong?.trangThai || null,
     };
-    console.log('🏁 Kết quả cuối cùng:', result);
+    // console.log('🏁 Kết quả cuối cùng:', result);
     return result;
 }
 

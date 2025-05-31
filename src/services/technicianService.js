@@ -1,6 +1,6 @@
 // technicianService.js
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../services/firebaseConfig';
 import { createKyThuatVien } from '../models/kyThuatVienModel';
 import { createTaiKhoan } from '../models/taiKhoanModel';
 import { createPhanCongKtv } from '../models/phanCongKtvModel';
@@ -46,10 +46,12 @@ export async function getTechniciansWithFilters({ search = '', chuyenMonIds = []
         result.push({
             id: tk.id,
             hoTen: tk.hoTen,
+            soDienThoai: tk.soDienThoai || '',
             trangThai: ktv.trangThaiHienTai,
             taskCount: taskMap[tk.id] || 0,
             chuyenMonIds: cmList,
         });
+
     });
 
     return result;

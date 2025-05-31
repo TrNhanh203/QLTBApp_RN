@@ -30,7 +30,7 @@ import SplashScreen from '../screens/common/SplashScreen';
 import AdminRequestDetailScreen from '../screens/admin/AdminRequestDetailScreen';
 import PhanCongDetailScreen from '../screens/admin/PhanCongDetailScreen';
 import DeviceByRoomScreen from '../screens/donvi/DeviceByRoomScreen';
-
+import AdminTechnicianListScreen from '../screens/admin/AdminDanhSachKyThuatVienScreen';
 
 
 
@@ -124,6 +124,12 @@ export default function AppNavigator() {
         options={{ title: 'Chi tiết phân công' }}
       />
       <Stack.Screen name="ThietBiTheoPhong" component={DeviceByRoomScreen} />
+
+
+      <Stack.Screen
+        name="AdminTechnicianList"
+        component={AdminTechnicianListScreen}
+      />
       {/* <Stack.Screen name="ThietBiTheoPhong" component={ThietBiTheoPhongScreen} /> */}
 
     </Stack.Navigator>
